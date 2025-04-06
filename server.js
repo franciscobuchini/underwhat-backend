@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 
-const allowedOrigins = ['http://localhost:5174', 'https://underwhat.vercel.app'];
+const allowedOrigins = ['http://localhost:5173', 'https://underwhat.vercel.app'];
 
 const corsOptions = {
   origin: function (origin, callback) {
