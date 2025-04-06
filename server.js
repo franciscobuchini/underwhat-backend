@@ -5,7 +5,18 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 
-const corsOptions = { origin: 'http://localhost:5174', 'https://underwhat.vercel.app' };
+const allowedOrigins = ['http://localhost:5174', 'https://underwhat.vercel.app'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  }
+};
+
 app.use(cors(corsOptions));
 
 // Conectar a la base de datos
